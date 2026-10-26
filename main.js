@@ -40,9 +40,9 @@ const timer = setInterval(function () {
 	time++;
 	document.getElementById("progress").style.width = time + "%";
 	if (time === 100) {
-		title.innerHTML = "Caricamento completato";
+		document.getElementById("loading-title").innerHTML = "Caricamento completato";
 		clearInterval(timer);
 	} else {
-		title.innerHTML = "Loading...";
+		document.getElementById("loading-title").innerHTML = "Loading...";
 	}
 }, 100);
