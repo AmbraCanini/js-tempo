@@ -29,3 +29,20 @@ btnStop.addEventListener("click", function () {
 btnReset.addEventListener("click", function () {
 	console.log("Premuto Reset!");
 });
+
+
+//impostazione width
+let time = 0
+
+document.getElementById("progress").style.width = "0%";
+
+const timer = setInterval(function () {
+	time++;
+	document.getElementById("progress").style.width = time + "%";
+	if (time === 100) {
+		title.innerHTML = "Caricamento completato";
+		clearInterval(timer);
+	} else {
+		title.innerHTML = "Loading...";
+	}
+}, 100);
