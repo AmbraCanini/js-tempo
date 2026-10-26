@@ -23,6 +23,8 @@ let interval;
 btnPlay.addEventListener("click", function () {
 	console.log("Premuto Play!");
 	btnPlay.disabled = true;
+	btnStop.disabled = false;
+	btnReset.disabled = true;
 	interval = setInterval(function () {
 		seconds++;
 		document.getElementById("cronometro").innerHTML = seconds;
@@ -31,10 +33,20 @@ btnPlay.addEventListener("click", function () {
 
 btnStop.addEventListener("click", function () {
 	console.log("Premuto Stop!");
+	clearInterval(interval);
+	btnPlay.disabled = false;
+	btnStop.disabled = true;
+	btnReset.disabled = false;
 });
 
 btnReset.addEventListener("click", function () {
 	console.log("Premuto Reset!");
+	seconds = 0;
+	document.getElementById("cronometro").innerHTML = seconds;
+	clearInterval(interval);
+	btnPlay.disabled = false;
+	btnStop.disabled = true;
+	btnReset.disabled = true;
 });
 
 
@@ -45,11 +57,11 @@ document.getElementById("progress").style.width = "0%";
 
 const timer = setInterval(function () {
 	time++;
-	document.getElementById("progress").style.width = time + "%";
+	progressBar.style.width = time + "%";
 	if (time === 100) {
-		document.getElementById("loading-title").innerHTML = "Caricamento completato";
+		title.innerHTML = "Caricamento completato";
 		clearInterval(timer);
 	} else {
-		document.getElementById("loading-title").innerHTML = "Loading...";
+		title.innerHTML = "Loading...";
 	}
 }, 100);
