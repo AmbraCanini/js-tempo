@@ -18,8 +18,15 @@ const btnStop = document.getElementById("stop-btn");
 const btnReset = document.getElementById("reset-btn");
 
 //Gestisco gli eventi
+let seconds = 0;
+let interval;
 btnPlay.addEventListener("click", function () {
 	console.log("Premuto Play!");
+	btnPlay.disabled = true;
+	interval = setInterval(function () {
+		seconds++;
+		document.getElementById("cronometro").innerHTML = seconds;
+	}, 1000);
 });
 
 btnStop.addEventListener("click", function () {
@@ -31,7 +38,7 @@ btnReset.addEventListener("click", function () {
 });
 
 
-//impostazione width
+//impostazione width e cronometro
 let time = 0
 
 document.getElementById("progress").style.width = "0%";
